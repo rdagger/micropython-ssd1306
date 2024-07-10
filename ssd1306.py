@@ -57,7 +57,7 @@ class Display(object):
     VCOM_DESELECT_LEVEL = const(0xdb)
 
     def __init__(self, spi=None, cs=None, dc=None, rst=None,
-                 i2c=None, address=0x3C, width=128, height=32, flip=True):
+                 i2c=None, address=0x3C, width=128, height=32, flip=False):
         """Constructor for Display.
 
         Args:
@@ -69,7 +69,7 @@ class Display(object):
             address (Optional int): I2C address
             width (Optional int): Screen width (default 128)
             height (Optional int): Screen height (default 64)
-            flip (bool):True=set rotation to 180 degrees, False=0 degrees
+            flip (bool):True=Rotate 180 degrees, False=0 degrees (default)
         """
         if rst is not None:
             self.rst = rst

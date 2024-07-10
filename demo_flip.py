@@ -8,7 +8,7 @@ from ssd1306 import Display
 def test():
     """Test code."""
     i2c = I2C(1, freq=400000, scl=Pin(40), sda=Pin(41))  # Qt-Py S2 I2C bus 1
-    display = Display(i2c=i2c, flip=False)  # Flip false
+    display = Display(i2c=i2c, flip=True)  # Flip 180 degrees
 
     print("Loading font.  Please wait.")
     bitstream = XglcdFont('fonts/Bitstream_Vera35x32.c', 35, 32)
@@ -18,14 +18,15 @@ def test():
     display.present()
     sleep(3)
 
-    display.flip()  # Flip to 180 degrees which is the default
+    display.flip(False)  # No flip which is the default
     display.present()
     sleep(3)
 
-    display.flip(False)  # No flip (0 degrees)
+    display.flip()  # Flip 180 degrees
     display.present()
 
     sleep(10)
+    display.flip(False)
     display.cleanup()
     print('Done.')
 
